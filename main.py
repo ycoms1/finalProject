@@ -29,8 +29,8 @@ def Install_ubuntu_packages():
     os.system('sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"')
     os.system('sudo apt update')
     os.system('apt-cache policy docker-ce')
-    os.system('sudo apt install docker-ce')
-    os.system('sudo systemctl status docker')
+    os.system('sudo apt install docker-ce -y')
+
 
 # Ansible
     print("Installing Ansible...")
@@ -38,7 +38,7 @@ def Install_ubuntu_packages():
     os.system('sudo apt install software-properties-common')
     os.system('sudo apt-add-repository ppa:ansible/ansible')
     os.system('sudo apt update')
-    os.system('sudo apt install ansible')
+    os.system('sudo apt install ansible -y')
 
 # Net-tools
     print("Installing Net-Tools....")
@@ -53,8 +53,9 @@ def Install_ubuntu_packages():
     os.system('sudo passwd root')
 # Snmp V3
     print("Installing Snmp.... ")
-    os.system('apt update')
-    os.system('apt install snmpd snmp libsnmp-dev')
+    os.system('sudo apt update')
+    os.system('sudo apt install snmpd snmp libsnmp-dev')
+
 #
 
 
