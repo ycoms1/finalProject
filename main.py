@@ -54,7 +54,8 @@ def Install_ubuntu_packages():
 # Snmp V3
     print("Installing Snmp.... ")
     os.system('sudo apt update')
-    os.system('sudo apt install snmpd snmp libsnmp-dev')
+    os.system('sudo apt install snmpd snmp libsnmp-dev -y')
+
 
 #
 
