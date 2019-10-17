@@ -45,8 +45,17 @@ def Install_centos_packages():
 
 # etc/hosts
     print("Update hosts file for Server...")
-    os.system('sudo -- sh -c "echo 192.168.2.1 controller >> /etc/hosts"')
-    os.system('sudo -- sh -c "echo 192.168.2.2 jenkins-master >> /etc/hosts"')
+    os.system('echo 192.168.2.1 controller >> /etc/hosts"')
+    os.system('echo 192.168.2.2 jenkins-master >> /etc/hosts"')
+
+# Change root password
+    print("changing User Root Password...")
+    os.system('sudo passwd root')
+
+# Snmp V3
+    print("Installing Snmp.... ")
+    os.system('yum -y install net-snmp net-snmp-utils')
+# Installation not check on centos7!!!!!
 
 
 
