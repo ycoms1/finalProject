@@ -5,14 +5,54 @@ my_net = '192.168.2.0/24'
 
 def discover_IP_in_net():
     os.system('sudo apt install nmap -y')
-    os.system('nmap -sP ' + my_net)
+    os.system('sudo nmap -sP ' + my_net)
 
 
 def Install_centos_packages():
-    print()
+# Python 3.7
+
+    print("Installing Python....")
+    os.system('yum install gcc openssl-devel bzip2-devel libffi-devel')
+    os.system('cd /usr/src')
+    os.system('wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz')
+    os.system('tar xzf Python-3.7.4.tgz')
+    os.system('cd Python-3.7.4')
+    os.system('./configure --enable-optimizations')
+    os.system('make altinstall')
+    os.system('rm /usr/src/Python-3.7.4.tgz')
+    os.system('python3.7 -V')
+# Docker
+    print("Installing Docker....")
+    os.system('sudo yum install -y yum-utils \
+              device-mapper-persistent-data \
+              lvm2')
+    os.system('sudo yum-config-manager \
+              --add-repo \
+              https://download.docker.com/linux/centos/docker-ce.repo')
+    os.system('sudo yum install -y docker-ce docker-ce-cli containerd.io')
+    os.system('sudo systemctl start docker')
+
+# Ansibale
+
+    print("Installing Ansibale....")
+    os.system('yum install epel-release -y')
+    os.system('yum install ansible')
+    os.system('ansible --version')
+
+# Net-tools
+    print("Installing Net-Tools....")
+    os.system('yum install -y net-tools')
+
+# etc/hosts
+    print("Update hosts file for Server...")
+    os.system('sudo -- sh -c "echo 192.168.2.1 controller >> /etc/hosts"')
+    os.system('sudo -- sh -c "echo 192.168.2.2 jenkins-master >> /etc/hosts"')
+
+
 
 
 def Install_ubuntu_packages():
+
 # Python
     print("Installing Python....")
     os.system('sudo apt update')
